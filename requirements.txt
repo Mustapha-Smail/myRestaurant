@@ -1,0 +1,14 @@
+mysqlclient
+scikit-learn
+django
+djangorestframework
+matplotlib
+plotly
+python-dotenv
+pandas
+graphviz
+numpy
+mysql-connector-python
+azure-storage-blob 
+django-cors-headers
+psycopg2-binary
