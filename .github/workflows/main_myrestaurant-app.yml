@@ -26,12 +26,23 @@ jobs:
         run: |
           python -m venv venv
           source venv/bin/activate
-      
+
       - name: Install dependencies
         run: pip install -r requirements.txt
-        
-      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
 
+      - name: create env file
+        run: |
+          touch .env
+          echo PORT{{ PORT }} >> .env
+          echo HOST{{ HOST }} >> .env
+          echo NAME{{ NAME }} >> .env
+          echo PASSWORD{{ PASSWORD }} >> .env
+          echo USER{{ USER }} >> .env
+          echo CSV_FILE{{ CSV_FILE }} >> .env
+          echo AZURE_STORAGE_ACCOUNT_NAME{{ AZURE_STORAGE_ACCOUNT_NAME }} >> .env
+          echo AZURE_STORAGE_ACCOUNT_KEY{{ AZURE_STORAGE_ACCOUNT_KEY }} >> .env
+          echo AZURE_CONTAINER_NAME{{ AZURE_CONTAINER_NAME }} >> .env
+      # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
 
@@ -61,7 +72,6 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      
       - name: Login to Azure
         uses: azure/login@v1
         with:
@@ -75,4 +85,3 @@ jobs:
         with:
           app-name: 'myrestaurant-app'
           slot-name: 'Production'
-          
