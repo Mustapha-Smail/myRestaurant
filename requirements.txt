@@ -12,3 +12,4 @@ mysql-connector-python
 azure-storage-blob 
 django-cors-headers
 psycopg2-binary
+whitenoise
