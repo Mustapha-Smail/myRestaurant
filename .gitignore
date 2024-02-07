@@ -91,3 +91,5 @@ db.sqlite3
 
 backend_app/data/*.csv
 .env
+
+venv/
